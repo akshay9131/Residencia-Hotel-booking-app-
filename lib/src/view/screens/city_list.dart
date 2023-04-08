@@ -3,8 +3,10 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:travelapp/controller/hotel_controller.dart';
+import 'package:travelapp/src/controller/hotel_controller.dart';
+import 'package:travelapp/core/theme/colors.dart';
 
+// ignore: must_be_immutable
 class CityList extends StatefulWidget {
   String city;
   CityList({super.key, required this.city});
@@ -32,24 +34,24 @@ class _CityListState extends State<CityList> {
     Scaffold(
        body: Center(
               child: LoadingAnimationWidget.hexagonDots(
-                  color: const Color.fromARGB(255, 6, 42, 44), size: 90),
+                  color: mainColor, size: 90),
             )
     ) :
     
      Scaffold(
           appBar: AppBar(
-            backgroundColor: const Color.fromARGB(255, 6, 42, 44),
+            backgroundColor: mainColor,
             leading: IconButton(
                 onPressed: () {
                   context.pop();
                 },
                 icon: const Icon(
                   Icons.arrow_back_ios_rounded,
-                  color: Colors.white,
+                  color: white,
                 )),
             title: Text(
               widget.city,
-              style: const TextStyle(fontFamily: "Overpass",color: Colors.white),
+              style: Theme.of(context).textTheme.titleLarge
             ),
           ),
           body: Padding(
@@ -69,14 +71,14 @@ class _CityListState extends State<CityList> {
                         }),
                         child: Container(
                           margin: const EdgeInsets.only(bottom: 10),
-                          height: 150,
+                          height: 170,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
+                            color: white,
                             boxShadow: const [
                               BoxShadow(
-                                  color: Color.fromARGB(255, 190, 189, 189),
+                                  color: shadow,
                                   offset: Offset.zero,
                                   blurRadius: 8)
                             ],
@@ -89,8 +91,7 @@ class _CityListState extends State<CityList> {
                                 decoration: BoxDecoration(
                                     boxShadow: const [
                                       BoxShadow(
-                                          color: Color.fromARGB(
-                                              255, 190, 189, 189),
+                                          color: shadow,
                                           offset: Offset.zero,
                                           blurRadius: 8)
                                     ],
@@ -110,22 +111,14 @@ class _CityListState extends State<CityList> {
                                   children: [
                                     Text(
                                       "${controller.CityHotelData[index].name}",
-                                      style: const TextStyle(
-                                        fontFamily: "Overpass",
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold,
-                                          color:
-                                              Color.fromARGB(255, 6, 42, 44)),
+                                      style: Theme.of(context).textTheme.titleMedium
                                     ),
                                     const SizedBox(
                                       height: 5,
                                     ),
                                     Text(
                                       "${controller.CityHotelData[index].city}",
-                                      style: const TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w100,
-                                          color: Colors.black),
+                                      style: Theme.of(context).textTheme.titleSmall
                                     ),
                                     const SizedBox(
                                       height: 10,
@@ -134,10 +127,7 @@ class _CityListState extends State<CityList> {
                                       children: <Widget>[
                                         Text(
                                           "Rating : ${controller.CityHotelData[index].rating}",
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 11,
-                                              fontWeight: FontWeight.bold),
+                                          style: Theme.of(context).textTheme.displayLarge
                                         ),
                                         const SizedBox(width: 5),
                                         RatingBar.builder(
@@ -153,11 +143,12 @@ class _CityListState extends State<CityList> {
                                             itemPadding:
                                                 const EdgeInsets.symmetric(
                                                     horizontal: 2),
-                                            itemBuilder: (context, _) => Icon(
+                                            itemBuilder: (context, _) => const Icon(
                                                   Icons.star,
-                                                  color: Colors.amber[600],
+                                                  color: rating,
                                                 ),
                                             onRatingUpdate: (rating) {
+                                              // ignore: avoid_print
                                               print(rating);
                                             }),
                                       ],
@@ -167,10 +158,7 @@ class _CityListState extends State<CityList> {
                                     ),
                                     Text(
                                       "Price : ${controller.CityHotelData[index].price}.00/-",
-                                      style: const TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
+                                      style: Theme.of(context).textTheme.titleMedium,
                                     )
                                   ],
                                 ),

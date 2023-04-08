@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/controller/hotel_controller.dart';
-import 'package:travelapp/view/widget/popular.dart';
-import 'package:travelapp/view/widget/tab.dart';
+import 'package:travelapp/src/controller/hotel_controller.dart';
+import 'package:travelapp/core/theme/colors.dart';
+import 'package:travelapp/src/view/widget/popular.dart';
+import 'package:travelapp/src/view/widget/tab.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -48,28 +49,25 @@ class _HomeScreenState extends State<HomeScreen> {
     return Obx(() {
       if (controller.AllHotelsData.isEmpty) {
         return Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: white,
             appBar: AppBar(
-              backgroundColor: Colors.white,
+              backgroundColor: white,
               elevation: 0,
               leading:
                   const Image(image: AssetImage("assets/images/logo1.png")),
               title: Column(
-                children: const [
+                children: [
                   Text(
                     "Residencia",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 6, 42, 44),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
+                    style: Theme.of(context).textTheme.titleMedium
                   ),
                   SizedBox(
-                    height: 2,
+                    height: 1,
                   ),
                   Text(
                     "Choose your comfort",
                     style: TextStyle(
-                        color: Color.fromARGB(255, 6, 42, 44),
+                        color: mainColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 9),
                   ),
@@ -79,38 +77,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(Icons.notification_important),
-                  color: const Color.fromARGB(255, 6, 42, 44),
+                  color: mainColor,
                   iconSize: 22,
                 )
               ],
             ),
             body: Center(
               child: LoadingAnimationWidget.hexagonDots(
-                  color: const Color.fromARGB(255, 6, 42, 44), size: 50),
+                  color: mainColor, size: 50),
             ));
       }
       return Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: white,
           appBar: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: white,
             elevation: 0,
             leading: const Image(image: AssetImage("assets/images/logo1.png")),
             title: Column(
-              children: const [
+              children: [
                 Text(
                   "Residencia",
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 6, 42, 44),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
+                  style: Theme.of(context).textTheme.titleMedium
                 ),
                 SizedBox(
-                  height: 2,
+                  height: 1,
                 ),
                 Text(
                   "Choose your comfort",
                   style: TextStyle(
-                      color: Color.fromARGB(255, 6, 42, 44),
+                      color: mainColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 9),
                 ),
@@ -120,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
               IconButton(
                 onPressed: () {},
                 icon: const Icon(Icons.notification_important),
-                color: const Color.fromARGB(255, 6, 42, 44),
+                color: mainColor,
                 iconSize: 22,
               )
             ],
@@ -131,14 +126,10 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     "Best For You",
-                    style: TextStyle(
-                      fontFamily: 'Overpass',
-                        color: Color.fromARGB(255, 6, 42, 44),
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.displayMedium
                   ),
                   SizedBox(
                     height: 10,

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:get/get.dart';
-import 'package:travelapp/controller/hotel_controller.dart';
-import 'package:travelapp/view/widget/tab_view.dart';
+import 'package:travelapp/src/controller/hotel_controller.dart';
+import 'package:travelapp/core/theme/colors.dart';
+import 'package:travelapp/src/view/widget/tab_view.dart';
 
 class TabWidget extends StatefulWidget {
   const TabWidget({super.key});
@@ -83,19 +84,19 @@ class _TabWidgetState extends State<TabWidget>
   Widget build(BuildContext context) {
     // ignore: sized_box_for_whitespace
     return Container(
-        height: 400,
+        height: 410,
         child: DefaultTabController(
           length: myTabs.length,
           child: Scaffold(
-              backgroundColor: Colors.white,
+              backgroundColor: white,
               appBar: PreferredSize(
                 preferredSize: const Size.fromHeight(50),
                 child: AppBar(
                   elevation: 0,
-                  backgroundColor: Colors.white,
+                  backgroundColor: white,
                   bottom: ButtonsTabBar(
-                      backgroundColor: const Color.fromARGB(255, 6, 42, 44),
-                      unselectedBackgroundColor: Colors.grey[300],
+                      backgroundColor: mainColor,
+                      unselectedBackgroundColor: textShadow,
                       contentPadding:
                           const EdgeInsets.symmetric(horizontal: 15),
                       controller: _tabController,

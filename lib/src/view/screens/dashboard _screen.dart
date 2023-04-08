@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:travelapp/controller/hotel_controller.dart';
-import 'package:travelapp/view/widget/bottom_navigation_widget.dart';
+import 'package:travelapp/src/controller/hotel_controller.dart';
+import 'package:travelapp/src/view/widget/bottom_navigation_widget.dart';
 
+// ignore: must_be_immutable
 class DashboardScreen extends StatefulWidget {
   Widget child;
   DashboardScreen({required this.child, super.key});
@@ -16,11 +17,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.child,
-      bottomNavigationBar: const Padding(
-        padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
-        child: BottomNavWidget(),
-      ),
-    );
+          body: widget.child,
+          bottomNavigationBar: const BottomNavWidget(),
+              
+        );
   }
 }

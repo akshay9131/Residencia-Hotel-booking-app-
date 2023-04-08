@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:travelapp/controller/hotel_controller.dart';
+import 'package:travelapp/src/controller/hotel_controller.dart';
+import 'package:travelapp/core/theme/colors.dart';
+import 'package:travelapp/core/theme/theme.dart';
 
 class PopularCard extends StatefulWidget {
   const PopularCard({super.key});
@@ -41,14 +43,14 @@ class _PopularCardState extends State<PopularCard> {
                   }),
                   child: Container(
                     margin: const EdgeInsets.only(bottom: 10),
-                    height: 150,
+                    height: 170,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
+                      color: white,
                       boxShadow: const [
                         BoxShadow(
-                            color: Color.fromARGB(255, 190, 189, 189),
+                            color: shadow,
                             offset: Offset.zero,
                             blurRadius: 8)
                       ],
@@ -61,7 +63,7 @@ class _PopularCardState extends State<PopularCard> {
                           decoration: BoxDecoration(
                               boxShadow: const [
                                 BoxShadow(
-                                    color: Color.fromARGB(255, 190, 189, 189),
+                                    color: shadow,
                                     offset: Offset.zero,
                                     blurRadius: 8)
                               ],
@@ -81,21 +83,14 @@ class _PopularCardState extends State<PopularCard> {
                             children: [
                               Text(
                                 "${controller.AllHotelsData[index].name}",
-                                style: const TextStyle(
-                                  fontFamily: "Overpass",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 6, 42, 44)),
+                                style: Theme.of(context).textTheme.titleMedium
                               ),
                               const SizedBox(
                                 height: 5,
                               ),
                               Text(
                                 "${controller.AllHotelsData[index].city}",
-                                style: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w100,
-                                    color: Colors.black),
+                                style: AppTheme.lightTheme.textTheme.titleSmall
                               ),
                               const SizedBox(
                                 height: 10,
@@ -104,10 +99,7 @@ class _PopularCardState extends State<PopularCard> {
                                 children: <Widget>[
                                   Text(
                                     "Rating : ${controller.AllHotelsData[index].rating}",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 11,
-                                        fontWeight: FontWeight.bold),
+                                    style: Theme.of(context).textTheme.displayLarge
                                   ),
                                   const SizedBox(width: 5),
                                   RatingBar.builder(
@@ -121,11 +113,12 @@ class _PopularCardState extends State<PopularCard> {
                                       itemCount: 5,
                                       itemPadding: const EdgeInsets.symmetric(
                                           horizontal: 2),
-                                      itemBuilder: (context, _) => Icon(
+                                      itemBuilder: (context, _) => const Icon(
                                             Icons.star,
-                                            color: Colors.amber[600],
+                                            color: rating,
                                           ),
                                       onRatingUpdate: (rating) {
+                                        // ignore: avoid_print
                                         print(rating);
                                       }),
                                 ],
@@ -135,10 +128,7 @@ class _PopularCardState extends State<PopularCard> {
                               ),
                               Text(
                                 "Price : ${controller.AllHotelsData[index].price}.00/-",
-                                style: const TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black),
+                                style: Theme.of(context).textTheme.titleMedium
                               )
                             ],
                           ),

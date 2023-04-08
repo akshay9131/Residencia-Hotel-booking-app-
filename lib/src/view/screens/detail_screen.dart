@@ -3,9 +3,11 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:travelapp/controller/hotel_controller.dart';
+import 'package:travelapp/src/controller/hotel_controller.dart';
+import 'package:travelapp/core/theme/colors.dart';
 
 
+// ignore: must_be_immutable
 class DetailScreen extends StatefulWidget {
   String? id;
   DetailScreen({super.key, this.id});
@@ -39,7 +41,7 @@ class _DetailScreenState extends State<DetailScreen> {
         return Scaffold(
           body: Center(
             child: LoadingAnimationWidget.hexagonDots(
-                color: Colors.black, size: 45),
+                color: mainColor, size: 50),
           ),
         );
       }
@@ -52,15 +54,16 @@ class _DetailScreenState extends State<DetailScreen> {
               },
               icon: const Icon(
                 Icons.arrow_back_ios_new,
-                color: Colors.white,
+                color: white,
               )),
-          backgroundColor: const Color.fromARGB(255, 6, 42, 44),
+          backgroundColor: mainColor,
           pinned: true,
           expandedHeight: 600,
           flexibleSpace: FlexibleSpaceBar(
             title: Text(
               "${controller.SingleHotelData[0].name}",
-              style: const TextStyle(fontFamily: "Overpass",color: Colors.white),
+              textAlign: TextAlign.start,
+              style:Theme.of(context).textTheme.titleLarge
             ),
             background: Stack(children: <Widget>[
               Container(
@@ -88,10 +91,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       children: <Widget>[
                         Text(
                           "Ratings ${controller.SingleHotelData[0].rating}",
-                          style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
+                          style: Theme.of(context).textTheme.displayLarge
                         ),
                         const SizedBox(width: 5),
                         RatingBar.builder(
@@ -105,9 +105,9 @@ class _DetailScreenState extends State<DetailScreen> {
                             itemCount: 5,
                             itemPadding:
                                 const EdgeInsets.symmetric(horizontal: 2),
-                            itemBuilder: (context, _) => Icon(
+                            itemBuilder: (context, _) => const Icon(
                                   Icons.star,
-                                  color: Colors.amber[600],
+                                  color: rating,
                                 ),
                             onRatingUpdate: (rating) {
                               print(rating);
@@ -120,21 +120,14 @@ class _DetailScreenState extends State<DetailScreen> {
                   padding: const EdgeInsets.only(left: 10, top: 10),
                   child: Text(
                     "Price : ${controller.SingleHotelData[0].price}.00/-",
-                    style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                    style: Theme.of(context).textTheme.titleMedium
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 10, top: 20),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, top: 20),
                   child: Text(
                     "OVERVIEW",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
                 const SizedBox(
@@ -144,36 +137,22 @@ class _DetailScreenState extends State<DetailScreen> {
                   padding: const EdgeInsets.all(10),
                   child: Text(
                     "${controller.SingleHotelData[0].about}",
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      height: 1.5,
-                    ),
+                    style: Theme.of(context).textTheme.titleSmall
                   ),
                 ),
                 const SizedBox(height: 15),
-                const Padding(
-                  padding: EdgeInsets.only(left: 10, top: 20),
+                 Padding(
+                  padding: const EdgeInsets.only(left: 10, top: 20),
                   child: Text(
                     "Address",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
+                    style: Theme.of(context).textTheme.titleMedium
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Text(
                     "${controller.SingleHotelData[0].location}",
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      height: 1.5,
-                    ),
+                    style: Theme.of(context).textTheme.titleSmall
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -183,13 +162,10 @@ class _DetailScreenState extends State<DetailScreen> {
                   width: MediaQuery.of(context).size.width,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children:  [
                       Text(
                         "Book Now",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500),
+                        style:Theme.of(context).textTheme.titleLarge
                       ),
                     ],
                   ),

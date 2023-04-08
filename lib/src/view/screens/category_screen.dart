@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/view/widget/city_card.dart';
+import 'package:travelapp/core/theme/theme.dart';
+import 'package:travelapp/src/view/widget/city_card.dart';
+import 'package:travelapp/core/theme/colors.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
@@ -12,15 +14,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 6, 42, 44),
+        backgroundColor: mainColor,
         centerTitle: true,
-        title: const Text(
+        title: Text(
           "Explore By Cities",
-          style: TextStyle(
-            color: Colors.white,
-          ),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
       body: const Padding(padding: EdgeInsets.all(10), child: CityCard()),

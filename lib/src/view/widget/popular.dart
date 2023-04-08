@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:travelapp/controller/hotel_controller.dart';
-import 'package:travelapp/view/widget/popular_card_widget.dart';
+import 'package:travelapp/src/controller/hotel_controller.dart';
+import 'package:travelapp/core/theme/colors.dart';
+import 'package:travelapp/src/view/widget/popular_card_widget.dart';
 
 class PopularWidget extends StatefulWidget {
   const PopularWidget({super.key});
@@ -23,13 +24,8 @@ class _PopularWidgetState extends State<PopularWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Hotels",
-            style: TextStyle(
-                color: Color.fromARGB(255, 6, 42, 44),
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                fontFamily: "Overpass"
-                )),
+         Text("Hotels",
+            style: Theme.of(context).textTheme.displayMedium),
         const SizedBox(
           height: 15,
         ),

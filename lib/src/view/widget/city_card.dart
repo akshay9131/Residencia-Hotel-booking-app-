@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:travelapp/core/theme/colors.dart';
 
 class CityCard extends StatefulWidget {
   const CityCard({super.key});
@@ -54,12 +55,12 @@ class _CityCardState extends State<CityCard> {
             height: 200,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: white,
                 border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: const [
                   BoxShadow(
-                      color: Color.fromARGB(255, 190, 189, 189),
+                      color: shadow,
                       offset: Offset.zero,
                       blurRadius: 8),
                 ],
@@ -69,9 +70,9 @@ class _CityCardState extends State<CityCard> {
                   padding: const EdgeInsets.only(top: 80),
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
-                  color: const Color.fromARGB(130, 0, 0, 0),
+                  color: Color.fromARGB(129, 0, 0, 0),
                   child: Text(
-                    "${name[index]}", textAlign: TextAlign.center,style: const TextStyle(fontFamily: "Overpass", letterSpacing: 4,color: Colors.white,fontSize: 35, fontWeight: FontWeight.w900, shadows: [Shadow(offset: Offset(2, 2), color: Colors.grey, blurRadius: 2)]),
+                    "${name[index]}", textAlign: TextAlign.center,style: const TextStyle(fontFamily: "Overpass", letterSpacing: 4,color: white,fontSize: 35, fontWeight: FontWeight.w900, shadows: [Shadow(offset: Offset(2, 2), color: textShadow, blurRadius: 2)]),
                   ),
                 )
             

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:travelapp/model/hotel_model.dart';
+import 'package:travelapp/src/model/hotel_model.dart';
 
 class HotelService {
   final Dio _dio = Dio();

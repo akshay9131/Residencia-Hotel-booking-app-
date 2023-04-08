@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:travelapp/controller/hotel_controller.dart';
+import 'package:travelapp/src/controller/hotel_controller.dart';
+import 'package:travelapp/core/theme/colors.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -18,16 +19,13 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 6, 42, 44),
+        backgroundColor: mainColor,
         centerTitle: true,
-        title: const Text(
+        title:Text(
           "Search",
-          style: TextStyle(
-            fontFamily: "Overpass",
-            color: Colors.white,
-          ),
+          style: Theme.of(context).textTheme.titleLarge
         ),
       ),
       body: Padding(
@@ -42,16 +40,16 @@ class _SearchScreenState extends State<SearchScreen> {
                     hintText: "search",
                     prefixIcon: const Icon(
                       Icons.search,
-                      color: Color.fromARGB(255, 6, 42, 44),
+                      color: mainColor,
                     ),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(
-                            color: Color.fromARGB(255, 6, 42, 44))),
+                            color: mainColor)),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(
-                            color: Color.fromARGB(255, 6, 42, 44)))),
+                            color: mainColor))),
               ),
               const SizedBox(
                 height: 30,
@@ -78,15 +76,14 @@ class _SearchScreenState extends State<SearchScreen> {
                                       }),
                                   child: Container(
                                     margin: const EdgeInsets.only(bottom: 10),
-                                    height: 150,
+                                    height: 170,
                                     width: MediaQuery.of(context).size.width,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white,
+                                      color: white,
                                       boxShadow: const [
                                         BoxShadow(
-                                            color: Color.fromARGB(
-                                                255, 190, 189, 189),
+                                            color: shadow,
                                             offset: Offset.zero,
                                             blurRadius: 8)
                                       ],
@@ -101,8 +98,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                           decoration: BoxDecoration(
                                               boxShadow: const [
                                                 BoxShadow(
-                                                    color: Color.fromARGB(
-                                                        255, 190, 189, 189),
+                                                    color: shadow,
                                                     offset: Offset.zero,
                                                     blurRadius: 8)
                                               ],
@@ -126,21 +122,14 @@ class _SearchScreenState extends State<SearchScreen> {
                                             children: [
                                               Text(
                                                 "${controller.SearchResults[index].name}",
-                                                style: const TextStyle(
-                                                    fontSize: 17,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Color.fromARGB(
-                                                        255, 6, 42, 44)),
+                                                style: Theme.of(context).textTheme.titleMedium
                                               ),
                                               const SizedBox(
                                                 height: 5,
                                               ),
                                               Text(
                                                 "${controller.SearchResults[index].city}",
-                                                style: const TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w100,
-                                                    color: Colors.black),
+                                                style: Theme.of(context).textTheme.titleSmall
                                               ),
                                               const SizedBox(
                                                 height: 10,
@@ -149,11 +138,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                 children: <Widget>[
                                                   Text(
                                                     "Rating : ${controller.SearchResults[index].rating}",
-                                                    style: const TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 11,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    style: Theme.of(context).textTheme.displayLarge
                                                   ),
                                                   const SizedBox(width: 5),
                                                   RatingBar.builder(
@@ -174,10 +159,9 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                   .symmetric(
                                                               horizontal: 2),
                                                       itemBuilder:
-                                                          (context, _) => Icon(
+                                                          (context, _) => const Icon(
                                                                 Icons.star,
-                                                                color: Colors
-                                                                    .amber[600],
+                                                                color: rating,
                                                               ),
                                                       onRatingUpdate: (rating) {
                                                         print(rating);
@@ -189,10 +173,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                               ),
                                               Text(
                                                 "Price : ${controller.SearchResults[index].price}.00/-",
-                                                style: const TextStyle(
-                                                    fontSize: 17,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black),
+                                                style: Theme.of(context).textTheme.titleMedium
                                               )
                                             ],
                                           ),

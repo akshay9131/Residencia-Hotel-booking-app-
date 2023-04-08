@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:travelapp/model/hotel_model.dart';
-import 'package:travelapp/service/hotel_api.dart';
+import 'package:travelapp/src/model/hotel_model.dart';
+import 'package:travelapp/service/api/hotel_api.dart';
 
 class HotelController extends GetxController {
   RxList<HotelModel> AllHotelsData = <HotelModel>[].obs;

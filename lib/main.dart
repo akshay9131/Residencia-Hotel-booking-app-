@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/view/widget/router/route.dart';
+import 'package:travelapp/core/theme/theme.dart';
+import 'package:travelapp/service/router/route.dart';
+import 'package:sizer/sizer.dart';
 
-void main() async{
-
+void main() async {
   runApp(MyApp());
 }
 
@@ -11,13 +12,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-      ),
-      routerConfig: router.goRouter(),
+    return Sizer(
+      builder: (BuildContext context, Orientation orientation,
+          DeviceType deviceType) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: AppTheme.lightTheme,
+          routerConfig: router.goRouter(),
+        );
+      },
     );
   }
 }

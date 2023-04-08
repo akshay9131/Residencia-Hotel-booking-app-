@@ -3,7 +3,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:travelapp/controller/hotel_controller.dart';
+import 'package:travelapp/src/controller/hotel_controller.dart';
+import 'package:travelapp/core/theme/colors.dart';
 
 class TabViewWidget extends StatefulWidget {
   const TabViewWidget({super.key});
@@ -20,7 +21,7 @@ class _TabViewWidgetState extends State<TabViewWidget> {
   Widget build(BuildContext context) {
     return Obx(
       () => controller.CityHotelData.isEmpty && controller.isLoading.value ? 
-      LoadingAnimationWidget.hexagonDots(color: const Color.fromARGB(255, 6, 42, 44), size: 20) 
+      LoadingAnimationWidget.hexagonDots(color: mainColor, size: 20) 
       : Container(
         padding: const EdgeInsets.only(left: 10),
         child: ListView.builder(
@@ -41,18 +42,18 @@ class _TabViewWidgetState extends State<TabViewWidget> {
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     margin: const EdgeInsets.only(left: 10),
-                    height: 300,
+                    height: 310,
                     width: 280,
                     decoration: BoxDecoration(
                         // ignore: prefer_const_literals_to_create_immutables
                         boxShadow: [
                           const BoxShadow(
-                              color: Color.fromARGB(255, 190, 189, 189),
+                              color: shadow,
                               offset: Offset.zero,
                               blurRadius: 8)
                         ],
                         borderRadius: BorderRadius.circular(6),
-                        color: Colors.white),
+                        color: white),
                     child: Column(
                       children: [
                         Container(
@@ -62,7 +63,7 @@ class _TabViewWidgetState extends State<TabViewWidget> {
                               // ignore: prefer_const_literals_to_create_immutables
                               boxShadow: [
                                 const BoxShadow(
-                                    color: Color.fromARGB(255, 190, 189, 189),
+                                    color: shadow,
                                     offset: Offset.zero,
                                     blurRadius: 8)
                               ],
@@ -85,31 +86,21 @@ class _TabViewWidgetState extends State<TabViewWidget> {
                             children: [
                               Text(
                                 "${controller.CityHotelData[index].name}",
-                                style: const TextStyle(
-                                  fontFamily: "Overpass",
-                                    fontSize: 15,
-                                    color: Color.fromARGB(255, 6, 42, 44),
-                                    fontWeight: FontWeight.bold),
+                                style: Theme.of(context).textTheme.titleMedium
                               ),
                               const SizedBox(
                                 height: 5,
                               ),
                               Text(
                                 controller.CityHotelData[index].city!,
-                                style: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w100,
-                                    color: Colors.black),
+                               style: Theme.of(context).textTheme.titleSmall
                               ),
                               const SizedBox(height: 10),
                               Row(
                                 children: <Widget>[
                                   Text(
                                     "Rating : ${controller.CityHotelData[index].rating}",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 11,
-                                        fontWeight: FontWeight.bold),
+                                    style: Theme.of(context).textTheme.displayLarge
                                   ),
                                   const SizedBox(width: 5),
                                   RatingBar.builder(
@@ -125,9 +116,10 @@ class _TabViewWidgetState extends State<TabViewWidget> {
                                           horizontal: 2),
                                       itemBuilder: (context, _) => Icon(
                                             Icons.star,
-                                            color: Colors.amber[600],
+                                            color: rating,
                                           ),
                                       onRatingUpdate: (rating) {
+                                        // ignore: avoid_print
                                         print(rating);
                                       }),
                                 ],
