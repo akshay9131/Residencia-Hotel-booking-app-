@@ -87,7 +87,7 @@ class _CityListState extends State<CityList> {
                             children: [
                               Container(
                                 height: MediaQuery.of(context).size.height,
-                                width: 100,
+                                width: 130,
                                 decoration: BoxDecoration(
                                     boxShadow: const [
                                       BoxShadow(

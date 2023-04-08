@@ -59,7 +59,7 @@ class _PopularCardState extends State<PopularCard> {
                       children: [
                         Container(
                           height: MediaQuery.of(context).size.height,
-                          width: 100,
+                          width: 130,
                           decoration: BoxDecoration(
                               boxShadow: const [
                                 BoxShadow(
